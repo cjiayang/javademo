@@ -10,7 +10,9 @@
 - [java日志历史及统一日志配置](https://zhuanlan.zhihu.com/p/367591121)
 
 本文内容为阅读Logback文档做的笔记，详情可以阅读文档。
-[https://logback.qos.sh/](https://logback.qos.sh/)
+
+- [https://logback.qos.sh/](https://logback.qos.sh/)
+- [logbakc中文手册](https://logbackcn.gitbook.io/logback/)
 
 ## Logback初体验
 
@@ -129,7 +131,7 @@ Logger的日志等级具有继承性。如果没有给Logger赋予Level属性，
 
 我们以一个表格来说明：
 
-![image.png](./assets/image.png)
+![image.png](src/assets/image.png)
 
 ### Logger命名
 
@@ -186,7 +188,6 @@ if(logger.isDebugEnabled()) {
 ```java
 logger.debug("The new entry is {}. It replaces {}.", entry, oldEntry);
 ```
-
 
 ## logback配置
 

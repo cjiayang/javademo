@@ -18,11 +18,17 @@
     <modules>
         <module>serializedemo</module>
         <module>logbackdemo</module>
+        <module>javaspidemo</module>
+        <module>iodemo</module>
+        <module>common</module>
+        <module>javasedemo</module>
+        <module>poidemo</module>
     </modules>
     <properties>
         <java.version>11</java.version>
         <logback.version>1.4.5</logback.version>
         <lombok.version>1.18.22</lombok.version>
+        <junit.version>5.9.2</junit.version>
     </properties>
     <dependencies>
         <!-- logback-classic日志依赖，会自动依赖slf4j和logbak-core -->
@@ -38,6 +44,14 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- junit  -->
+        <dependency>
+            <scope>compile</scope>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
         </dependency>
     </dependencies>
 
