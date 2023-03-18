@@ -23,6 +23,8 @@
         <module>common</module>
         <module>javasedemo</module>
         <module>poidemo</module>
+        <module>encryptdemo</module>
+        <module>httpclient</module>
     </modules>
     <properties>
         <java.version>11</java.version>

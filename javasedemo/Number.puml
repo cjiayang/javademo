@@ -1,0 +1,68 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Comparable
+abstract class Number implements Comparable
+class Byte
+class Short
+class Integer
+class Long
+class Float
+class Double
+class AtomicInteger
+class AiomicLong
+class BigDecimal
+class BigInteger
+class BigFraction
+class Fraction
+class Decimal64
+abstract class Striped64
+class LongAdder
+class LongAccumulator
+class DoubleAdder
+class DoubleAccumulator
+
+
+Number <|-left- Byte
+Number <|-left- Short
+Number <|-left- Integer
+Number <|-left- Long
+Number <|-left- Float
+Number <|-left- Double
+Number <|-- AtomicInteger
+Number <|-- AiomicLong
+Number <|-right- BigDecimal
+Number <|-right- BigInteger
+Number <|-right- BigFraction
+Number <|-- Fraction
+Number <|-- Decimal64
+Number <|-- Striped64
+Striped64 <|-- LongAdder
+Striped64 <|-- LongAccumulator
+Striped64 <|-- DoubleAdder
+Striped64 <|-- DoubleAccumulator
+
+'abstract class AbstractList
+'abstract AbstractCollection
+'interface List
+'interface Collection
+'
+'List <|-- AbstractList
+'Collection <|-- AbstractCollection
+'
+'Collection <|- List
+'AbstractCollection <|- AbstractList
+'AbstractList <|-- ArrayList
+'
+'class ArrayList {
+'Object[] elementData
+'size()
+'}
+'
+'enum TimeUnit {
+'DAYS
+'HOURS
+'MINUTES
+'}
+
+@enduml
