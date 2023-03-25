@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2005, 2023, EVECOM Technology Co.,Ltd. All rights reserved.
- * EVECOM PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- */
 package net.jyou.javase.number;
 
 import static net.jyou.util.PrintUtil.*;
@@ -59,6 +55,16 @@ public class NumberDemo {
         println(Integer.toOctalString(256));
         println(Integer.toHexString(256));
 
+        println("-----------特殊数字的二进制值---------");
+        printf("0's binary string is %s", Integer.toBinaryString(0));
+        printf("1's binary string is %s", Integer.toBinaryString(1));
+        // 11111111111111111111111111111111
+        printf("-1's binary string is %s",Integer.toBinaryString(-1));
+        // 11111111111111111111111111111111 这里是为啥
+        printf("maximun integer 2147483647's binary string is %s",Integer.toBinaryString(Integer.MAX_VALUE));
+        // 10000000000000000000000000000000 这里是为啥
+        printf("minimun integer -2147483648's binary string is %s", Integer.toBinaryString(Integer.MIN_VALUE));
+
         println("-----------Byte相关方法---------");
         println(Byte.valueOf("100", 2));
         println(Byte.decode("100"));
@@ -67,6 +73,17 @@ public class NumberDemo {
         println(Double.isFinite(1.0));
         println(Double.isNaN(2));
         println(Double.doubleToLongBits(256.0));
+
+
+        println("-----------(-127~128)缓存测试---------");
+        Integer v1 = Integer.valueOf(100);
+        Integer v2 = Integer.valueOf(100);
+        Integer v3 = Integer.valueOf(200);
+        Integer v4 = Integer.valueOf(200);
+        printf("v1's memory address is %d", System.identityHashCode(v1));
+        printf("v2's memory address is %d", System.identityHashCode(v2));
+        printf("v3's memory address is %d", System.identityHashCode(v3));
+        printf("v4's memory address is %d", System.identityHashCode(v4));
 
     }
 }

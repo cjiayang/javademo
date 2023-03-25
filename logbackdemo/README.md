@@ -78,8 +78,7 @@ com.foo.Bar
 
 Logger接口基础的方法如下：
 
-```java
-package org.slf4j; 
+```javapackage org.slf4j; 
 public interface Logger {
 
   // Printing methods: 

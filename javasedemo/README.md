@@ -62,5 +62,50 @@ boolean equals(Object obj)
 | static Integer valueOf(String s)            | 将字符串转为对应的数值对象                                             |
 | static Integer valueOf(String s, int radix) | 根据radix值(10, 2, 8, or 16)，将其他进制的字符串，转换成十进制数值对象 |
 
+### Math
+
+Math类提供了一系列的静态方法用于数学计算
+
+估算
+
+- double ceil(double d)
+- double floor(double d)
+- long round(double d)
+
+比较大小
+
+- int min(int arg1, int arg2)
+- int max(int arg1, int arg2)
+
+对数指数运算
+
+- double exp(double d)
+- double log(double d)
+- double pow(double base, double exponent)
+- double sqrt(double d)
+
+三角函数
+
+- double sin(double d)
+- double cos(double d)
+- double tan(double d)
+- double toDegrees(double d)
+- double toRadians(double d)
+
+随机值
+
+- double random()，返回值在【0,1）之间
+
+### BigInteger
+
+BigInteger和BigDecimal用于精确计算
+
+### 源码分析
+
+Integer源码分析：[Java 基础：Integer 源码分析](https://zhuanlan.zhihu.com/p/107779039)
 
 ## Stirng
+
+### 源码分析
+
+String源码分析：https://blog.csdn.net/Herishwater/article/details/101030412
