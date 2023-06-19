@@ -25,6 +25,8 @@
         <module>poidemo</module>
         <module>encryptdemo</module>
         <module>httpclient</module>
+        <module>schedule</module>
+        <module>mytest</module>
     </modules>
     <properties>
         <java.version>11</java.version>

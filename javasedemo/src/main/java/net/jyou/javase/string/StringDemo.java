@@ -11,6 +11,17 @@ import static net.jyou.util.PrintUtil.*;
  */
 public class StringDemo {
     public static void main(String[] args) {
+        String sql = new StringBuilder()
+                .append("SELECT\n")
+                .append("    a.attr_value attrValue\n")
+                .append("FROM\n")
+                .append("    CWY_USER_ATTR a\n")
+                .append("    LEFT JOIN CWY_CATEGORY_ATTR c ON a.attr_id = c.id\n")
+                .append("WHERE\n")
+                .append("    a.user_id in( :ids )\n")
+                .append("  and c.code = 'employeeID'").toString();
+        System.out.println(sql);
+
         String statement = "When working with numbers, most of the time you use the primitive types in your code.";
         println(statement.length());
 
