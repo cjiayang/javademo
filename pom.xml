@@ -30,10 +30,10 @@
         <module>json-process</module>
     </modules>
     <properties>
-        <java.version>11</java.version>
-        <logback.version>1.4.5</logback.version>
-        <lombok.version>1.18.22</lombok.version>
-        <junit.version>5.9.2</junit.version>
+        <java.version>23</java.version>
+        <logback.version>1.5.16</logback.version>
+        <lombok.version>1.18.36</lombok.version>
+        <junit.version>5.11.4</junit.version>
     </properties>
     <dependencies>
         <!-- logback-classic日志依赖，会自动依赖slf4j和logbak-core -->
