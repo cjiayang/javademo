@@ -28,6 +28,14 @@
         <module>schedule</module>
         <module>mytest</module>
         <module>json-process</module>
+        <module>jdbc</module>
+        <module>jdbc/oracle</module>
+        <module>jdbc/dameng</module>
+        <module>script</module>
+        <module>script/aviator</module>
+        <module>jdbc/kingbase</module>
+        <module>json-process/jackson</module>
+        <module>json-process/jsonpath</module>
     </modules>
     <properties>
         <java.version>23</java.version>
@@ -49,6 +57,12 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.32</version>
         </dependency>
 
         <!-- junit  -->

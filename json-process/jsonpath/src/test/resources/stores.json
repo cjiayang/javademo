@@ -1,0 +1,81 @@
+{
+  "count": 3,
+  "stores": [
+    {
+      "store": {
+        "id": 1,
+        "address": "172.16.16.125:20160",
+        "version": "8.5.0",
+        "peer_address": "172.16.16.125:20160",
+        "status_address": "172.16.16.125:20180",
+        "git_hash": "a2c58c94f89cbb410e66d8f85c236308d6fc64f0",
+        "start_timestamp": 1742818086,
+        "deploy_path": "/tidb-deploy/tikv-20160/bin",
+        "last_heartbeat": 1744963653533600356,
+        "node_state": 1,
+        "state_name": "Up"
+      },
+      "status": {
+        "capacity": "69.97GiB",
+        "available": "58.81GiB",
+        "used_size": "1.317GiB",
+        "leader_count": 0,
+        "leader_weight": 1,
+        "leader_score": 0,
+        "leader_size": 0,
+        "region_count": 5,
+        "region_weight": 1,
+        "region_score": 56.13368200743544,
+        "region_size": 6,
+        "slow_score": 1,
+        "slow_trend": {
+          "cause_value": 250031.78595317726,
+          "cause_rate": 0,
+          "result_value": 0,
+          "result_rate": 0
+        },
+        "start_ts": "2025-03-24T20:08:06+08:00",
+        "last_heartbeat_ts": "2025-04-18T16:07:33.533600356+08:00",
+        "uptime": "595h59m27.533600356s"
+      }
+    },
+    {
+      "store": {
+        "id": 2,
+        "address": "172.16.16.124:20160",
+        "version": "8.5.0",
+        "peer_address": "172.16.16.124:20160",
+        "status_address": "172.16.16.124:20180",
+        "git_hash": "a2c58c94f89cbb410e66d8f85c236308d6fc64f0",
+        "start_timestamp": 1742818077,
+        "deploy_path": "/tidb-deploy/tikv-20160/bin",
+        "last_heartbeat": 1744963656068280880,
+        "node_state": 1,
+        "state_name": "Up"
+      },
+      "status": {
+        "capacity": "69.97GiB",
+        "available": "58.81GiB",
+        "used_size": "1.317GiB",
+        "leader_count": 2,
+        "leader_weight": 1,
+        "leader_score": 2,
+        "leader_size": 2,
+        "region_count": 5,
+        "region_weight": 1,
+        "region_score": 56.14420841390578,
+        "region_size": 6,
+        "slow_score": 1,
+        "slow_trend": {
+          "cause_value": 250029.32775919733,
+          "cause_rate": 0,
+          "result_value": 0,
+          "result_rate": 0
+        },
+        "start_ts": "2025-03-24T20:07:57+08:00",
+        "last_heartbeat_ts": "2025-04-18T16:07:36.06828088+08:00",
+        "uptime": "595h59m39.06828088s"
+      }
+    }
+  ]
+}

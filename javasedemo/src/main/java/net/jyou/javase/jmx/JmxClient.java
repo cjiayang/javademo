@@ -265,44 +265,6 @@ public class JmxClient implements Closeable {
     }
 
     /**
-     * Return an array of the operations associated with the bean name.
-     */
-    public MBeanOperationInfo[] getOperationsInfo(String domainName, String beanName) throws JMException {
-        return getOperationsInfo(ObjectNameUtil.makeObjectName(domainName, beanName));
-    }
-
-    /**
-     * Return an array of the operations associated with the bean name.
-     */
-    public MBeanOperationInfo[] getOperationsInfo(ObjectName name) throws JMException {
-        checkClientConnected();
-        try {
-            return mbeanConn.getMBeanInfo(name).getOperations();
-        } catch (Exception e) {
-            throw createJmException("Problems getting bean information from " + name, e);
-        }
-    }
-
-    /**
-     * Return an array of the operations associated with the bean name.
-     */
-    public MBeanOperationInfo getOperationInfo(ObjectName name, String oper) throws JMException {
-        checkClientConnected();
-        MBeanInfo mbeanInfo;
-        try {
-            mbeanInfo = mbeanConn.getMBeanInfo(name);
-        } catch (Exception e) {
-            throw createJmException("Problems getting bean information from " + name, e);
-        }
-        for (MBeanOperationInfo info : mbeanInfo.getOperations()) {
-            if (oper.equals(info.getName())) {
-                return info;
-            }
-        }
-        return null;
-    }
-
-    /**
      * Return the value of a JMX attribute.
      */
     public Object getAttribute(String domain, String beanName, String attributeName) throws Exception {
@@ -352,116 +314,7 @@ public class JmxClient implements Closeable {
         return getAttributes(ObjectNameUtil.makeObjectName(domain, beanName), attributes);
     }
 
-    /**
-     * Set the JMX attribute to a particular value string.
-     */
-    public void setAttribute(String domainName, String beanName, String attrName, String value) throws Exception {
-        setAttribute(ObjectNameUtil.makeObjectName(domainName, beanName), attrName, value);
-    }
 
-    /**
-     * Set the JMX attribute to a particular value string.
-     */
-    public void setAttribute(ObjectName name, String attrName, String value) throws Exception {
-        MBeanAttributeInfo info = getAttrInfo(name, attrName);
-        if (info == null) {
-            throw new IllegalArgumentException("Cannot find attribute named '" + attrName + "'");
-        } else {
-            setAttribute(name, attrName, ClientUtils.stringToParam(value, info.getType()));
-        }
-    }
-
-    /**
-     * Set the JMX attribute to a particular value string.
-     */
-    public void setAttribute(String domainName, String beanName, String attrName, Object value) throws Exception {
-        setAttribute(ObjectNameUtil.makeObjectName(domainName, beanName), attrName, value);
-    }
-
-    /**
-     * Set the JMX attribute to a particular value.
-     */
-    public void setAttribute(ObjectName name, String attrName, Object value) throws Exception {
-        checkClientConnected();
-        Attribute attribute = new Attribute(attrName, value);
-        mbeanConn.setAttribute(name, attribute);
-    }
-
-    /**
-     * Set a multiple attributes at once on the server.
-     */
-    public void setAttributes(ObjectName name, List<Attribute> attributes) throws Exception {
-        checkClientConnected();
-        mbeanConn.setAttributes(name, new AttributeList(attributes));
-    }
-
-    /**
-     * Set a multiple attributes at once on the server.
-     */
-    public void setAttributes(String domainName, String beanName, List<Attribute> attributes) throws Exception {
-        setAttributes(ObjectNameUtil.makeObjectName(domainName, beanName), attributes);
-    }
-
-    /**
-     * Invoke a JMX method with a domain/object-name as an array of parameter strings.
-     *
-     * @return The value returned by the method or null if none.
-     */
-    public Object invokeOperation(String domain, String beanName, String operName, String... paramStrings)
-            throws Exception {
-        if (paramStrings.length == 0) {
-            return invokeOperation(ObjectNameUtil.makeObjectName(domain, beanName), operName, null, null);
-        } else {
-            return invokeOperation(ObjectNameUtil.makeObjectName(domain, beanName), operName, paramStrings);
-        }
-    }
-
-    /**
-     * Invoke a JMX method as an array of parameter strings.
-     *
-     * @return The value returned by the method or null if none.
-     */
-    public Object invokeOperation(ObjectName name, String operName, String... paramStrings) throws Exception {
-        String[] paramTypes = lookupParamTypes(name, operName, paramStrings);
-        Object[] paramObjs;
-        if (paramStrings.length == 0) {
-            paramObjs = null;
-        } else {
-            paramObjs = new Object[paramStrings.length];
-            for (int i = 0; i < paramStrings.length; i++) {
-                paramObjs[i] = ClientUtils.stringToParam(paramStrings[i], paramTypes[i]);
-            }
-        }
-        return invokeOperation(name, operName, paramTypes, paramObjs);
-    }
-
-    /**
-     * Invoke a JMX method as an array of parameter strings.
-     *
-     * @return The value returned by the method as a string or null if none.
-     */
-    public String invokeOperationToString(ObjectName name, String operName, String... paramStrings) throws Exception {
-        return ClientUtils.valueToString(invokeOperation(name, operName, paramStrings));
-    }
-
-    /**
-     * Invoke a JMX method as an array of objects.
-     *
-     * @return The value returned by the method or null if none.
-     */
-    public Object invokeOperation(String domain, String beanName, String operName, Object... params) throws Exception {
-        return invokeOperation(ObjectNameUtil.makeObjectName(domain, beanName), operName, params);
-    }
-
-    /**
-     * Invoke a JMX method as an array of objects.
-     *
-     * @return The value returned by the method or null if none.
-     */
-    public Object invokeOperation(ObjectName objectName, String operName, Object... params) throws Exception {
-        String[] paramTypes = lookupParamTypes(objectName, operName, params);
-        return invokeOperation(objectName, operName, paramTypes, params);
-    }
 
     private static Map<String, Object> addCredentialsToMap(String userName, String password,
                                                            Map<String, Object> environmentMap) {
@@ -475,13 +328,6 @@ public class JmxClient implements Closeable {
         return environmentMap;
     }
 
-    private Object invokeOperation(ObjectName objectName, String operName, String[] paramTypes, Object[] params)
-            throws Exception {
-        if (params != null && params.length == 0) {
-            params = null;
-        }
-        return mbeanConn.invoke(objectName, operName, params, paramTypes);
-    }
 
     private String[] lookupParamTypes(ObjectName objectName, String operName, Object[] params) throws JMException {
         checkClientConnected();

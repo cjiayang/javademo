@@ -14,6 +14,8 @@ public class Main {
         Inet4Address inet4Address = Inet4Address.ofLiteral("172.16.16.47");
         JmxClient client = new JmxClient(inet4Address, 1616);
 
+
+
         String[] beanDomains = client.getBeanDomains();
         for (String beanDomain : beanDomains) {
             System.out.println("===================");
